@@ -1,0 +1,45 @@
+[am-text="title"] {
+    font-size: $title_size;
+    color: $text_color_deep_dark;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+[am-text="link"] {
+    font-size: $link_size;
+}
+
+[am-text="content"] {
+    font-size: $content_size;
+    color: $text_color_deep_dark;
+    line-height: $content_line_height;
+}
+
+[am-text="menu"] {
+    font-size: $link_size;
+    font-weight: 400;
+    color: $text_color_light;
+    line-height: 19px;
+}
+
+[am-text="red"] {
+    color: $utility_color;
+}
+
+@media(max-width:$lg) {
+    [am-text="title"] {
+        font-size: $title_size;
+    }
+}
+
+@media(max-width:$md) {
+    [am-text="title"] {
+        font-size: $title_size_md;
+    }
+}
+
+@media(max-width:$sm) {
+    [am-text="title"] {
+        font-size: $title_size_sm;
+    }
+}

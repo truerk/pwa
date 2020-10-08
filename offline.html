@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="theme-color" content="#2196f3"/>
+    <meta name="apple-mobile-web-app-status-bar" content="#2196f3"/>
+
+    <link rel='manifest' href='/manifest.json'>
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+
+    <link rel="stylesheet" href="bundles/index.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="favicon.ico" rel="icon" type="image/ico"/>
+    <title>Доставка | Победа</title>
+
+    <script>
+        window.addEventListener('load', () => {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('SW success registered', registration);
+                    })
+                    .catch(error => {
+                        console.log('SW failed registered', error);
+                    })
+            }
+        })
+    </script>
+</head>
+
+<body>
+<div id="wrapper">
+    <h1>Offline</h1>
+</div>
+<script src="bundles/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+[am-popup="send-popup"] {
+  [am-tooltip] {
+    max-width: 720px;
+    padding: 0px;
+    background: transparent;
+
+    video {
+      width: 100%;
+      outline: none;
+    }
+  }
+
+  [am-button-close]::before, [am-button-close]::after {
+    border-color: #fff;
+  }
+
+  [am-button-close] {
+    top: -30px;
+    right: -30px;
+    background: transparent;
+    box-shadow: unset;
+  }
+}
+
+
+@media (max-width: $sm) {
+  [am-popup][show-popup='true'] {
+    position: fixed;
+
+    [am-tooltip] {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      height: max-content;
+      overflow: initial;
+    }
+
+    [am-button-close] {
+      top: -8px;
+      right: -8px;
+    }
+  }
+}

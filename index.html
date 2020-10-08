@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="theme-color" content="#2196f3"/>
+    <meta name="apple-mobile-web-app-status-bar" content="#2196f3"/>
+
+    <link rel='manifest' href='/manifest.json'>
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+
+    <link rel="stylesheet" href="bundles/index.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="favicon.ico" rel="icon" type="image/ico"/>
+    <title>Доставка | Победа</title>
+
+    <script>
+        window.addEventListener('load', () => {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('SW success registered', registration);
+                    })
+                    .catch(error => {
+                        console.log('SW failed registered', error);
+                    })
+            }
+        })
+    </script>
+    <script>
+        var deferredPromt = null;
+        window.addEventListener("beforeinstallprompt", function(e) {
+            console.log(666);
+            e.preventDefault();
+            deferredPromt = e;
+        })
+
+        async function install() {
+            console.log(321, deferredPromt);
+            if (deferredPromt) {
+                deferredPromt.prompt();
+                console.log(deferredPromt);
+
+                deferredPromt.userChoice.then(function(choiceResuilt) {
+                    if (choiceResuilt.outcome === 'accepted') {
+                        console.log('pwa install');
+                    } else {
+                        console.log('pwa not install');
+                    }
+                })
+
+                deferredPromt = null;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="wrapper">
+    <div am-tooltip="mobile-header">
+        <div am-container="mobile-header">
+            <div am-wrapper="mobile-header">
+                <div am-top>
+                    <div am-close></div>
+                    <div am-logo-wrapper>
+                        <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank">
+                            <div am-logo></div>
+                        </a>
+                    </div>
+                </div>
+                <ul am-menu-list>
+                    <li am-menu-item="advantages">
+                        Преимущества доставки
+                    </li>
+                    <li am-menu-item="receive">
+                        Как оформить ?
+                    </li>
+                    <li am-menu-item="map">
+                        Начать покупки
+                    </li>
+                </ul>
+                <div am-contacts>
+                    <a href="tel:+74951374003" am-phone>8 (495) 137-40-03</a>
+                    <div am-address>м. Смоленская, ул.Арбат 38/1, строение 2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div am-container="header">
+        <div am-wrapper="header">
+            <div am-column='left'>
+                <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank">
+                    <div am-logo="desktop"></div>
+                </a>
+            </div>
+
+            <div am-column='right'>
+                <span am-text="menu" am-menu-item="advantages">Преимущества доставки</span>
+                <span am-text="menu" am-menu-item="receive">Как оформить ?</span>
+                <span am-text="menu" am-menu-item="map">Начать покупки</span>
+            </div>
+        </div>
+        <div am-wrapper="mobile-header">
+            <button am-burger></button>
+            <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank">
+                <div am-logo="mobile"></div>
+            </a>
+        </div>
+    </div>
+    <div am-subheader>
+        <div am-gif>
+            <video loop autoplay muted>
+                <source src="src/img/video/pobeda_delivery.webm" type='video/webm'>
+                <source src="src/img/video/pobeda_delivery.mp4" type='video/mp4'>
+                <source src="src/img/video/subheader.ogv" type='video/ogg'>
+                I'm sorry; your browser doesn't support HTML5 video.
+            </video>
+        </div>
+        <div am-container="subheader">
+            <div am-wrapper="subheader">
+                <h1 am-site-title>Побеждая расстояния</h1>
+                <span am-pretitle>Теперь вы можете заказать товар из любого филиала «Победы» с подробным видеобзором</span>
+            </div>
+        </div>
+    </div>
+    <div am-container="advantages" id="advantages">
+        <div am-interactive="wrapper" advantages am-grid="container">
+            <div am-interactive="title" am-grid="item" elg="6" sm="12">
+                <button onclick="install()" am-button="main" id="pwa-inst" style="min-height: 30px;min-width: 150px;background:red;color:#fff;padding: 10px;">Установить</button>
+                <h2 am-interactive="header">Мы <span am-text="red">поможем</span> и ответим на все интересующие вас вопросы</h2>
+                <div am-interactive="button-group">
+                    <div am-interactive-button="stage-1" active>
+                        <span am-icon="iphone" active></span>
+                        <svg am-progress>
+                            <circle am-progress-start cx="34" cy="34" r="32"></circle>
+                        </svg>
+                    </div>
+                    <div am-interactive-button="stage-2">
+                        <span am-icon="video"></span>
+                        <svg am-progress>
+                            <circle cx="34" cy="34" r="32"></circle>
+                        </svg>
+                    </div>
+                    <div am-interactive-button="stage-3">
+                        <span am-icon="lock"></span>
+                        <svg am-progress>
+                            <circle cx="34" cy="34" r="32"></circle>
+                        </svg>
+                    </div>
+                    <div am-interactive-button="stage-4">
+                        <span am-icon="support"></span>
+                        <svg am-progress>
+                            <circle cx="34" cy="34" r="32"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <div am-interactive="text-group">
+                    <div am-interactive-text="stage-1" active>
+                        <h3 am-interactive="subheader">Большой выбор товаров</h3>
+                        <p am-interactive="text">Более 60 000 позиций техники доступных для доставки</p>
+                    </div>
+                    <div am-interactive-text="stage-2">
+                        <h3 am-interactive="subheader">Подробный видеообзор</h3>
+                        <p am-interactive="text">Пришлём полный видеообзор выбранной техники</p>
+                        <div am-popup-video="review" am-video-button>Пример видео <span am-icon="video_circle"></span></div>
+                    </div>
+                    <div am-interactive-text="stage-3">
+                        <h3 am-interactive="subheader">Товар застрахован </h3>
+                        <p am-interactive="text">Мы надежно храним данные карты и обрабатываем платежи по защищенным протоколам. Перед отправкой качественно упаковываем, пломбируем и страхуем посылку </p>
+                        <div am-popup-video="save" am-video-button>Пример видео <span am-icon="video_circle"></span></div>
+                    </div>
+                    <div am-interactive-text="stage-4">
+                        <h3 am-interactive="subheader">Поддержка менеджеров</h3>
+                        <p am-interactive="text">Наши сотрудники ответят на все ваши вопросы  </p>
+                    </div>
+                </div>
+            </div>
+            <div am-interactive="stages" am-grid="item" elg="6" sm="12">
+                <div am-interactive-stage="stage-1" active>
+                    <div am-slider-first class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div am-product class="swiper-slide">
+                                <div am-product-img>
+                                    <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                        <img am-item-img="" src="/src/img/product.jpg" alt="Купить УШМ makita 9565HZ б/у в . Цена 2 200 рублей">
+                                    </a>
+                                </div>
+                                <div am-product-wrapper>
+                                    <div am-product-name>
+                                        <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                            Планшет Apple iPad 3 16Gb Wi-Fi
+                                        </a>
+                                    </div>
+                                    <div am-product-price>
+                                        1 500<span am-rub=""> a </span>
+                                    </div>
+                                    <div am-product-city>Краснодар</div>
+                                    <a am-product-action href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/telefony/zaryadnye-ustroistva/dokstanciya-dlya-iphone-i-apple-watch-belkin-f8j183-2029900012416/">В корзину</a>
+                                </div>
+                            </div>
+                            <div am-product class="swiper-slide">
+                                <div am-product-img>
+                                    <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                        <img am-item-img="" src="/src/img/product.jpg" alt="Купить УШМ makita 9565HZ б/у в . Цена 2 200 рублей">
+                                    </a>
+                                </div>
+                                <div am-product-wrapper>
+                                    <div am-product-name>
+                                        <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                            Планшет Apple iPad 3 16Gb Wi-Fi
+                                        </a>
+                                    </div>
+                                    <div am-product-price>
+                                        1 500<span am-rub=""> a </span>
+                                    </div>
+                                    <div am-product-city>Краснодар</div>
+                                    <a am-product-action href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/telefony/zaryadnye-ustroistva/dokstanciya-dlya-iphone-i-apple-watch-belkin-f8j183-2029900012416/">В корзину</a>
+                                </div>
+                            </div>
+                            <div am-product class="swiper-slide">
+                                <div am-product-img>
+                                    <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                        <img am-item-img="" src="/src/img/product.jpg" alt="Купить УШМ makita 9565HZ б/у в . Цена 2 200 рублей">
+                                    </a>
+                                </div>
+                                <div am-product-wrapper>
+                                    <div am-product-name>
+                                        <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                            Планшет Apple iPad 3 16Gb Wi-Fi 123 12312 3 123
+                                        </a>
+                                    </div>
+                                    <div am-product-price>
+                                        1 500<span am-rub=""> a </span>
+                                    </div>
+                                    <div am-product-city>Краснодар</div>
+                                    <a am-product-action href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/telefony/zaryadnye-ustroistva/dokstanciya-dlya-iphone-i-apple-watch-belkin-f8j183-2029900012416/">В корзину</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div am-slider-second class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div am-product class="swiper-slide">
+                                <div am-product-img>
+                                    <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                        <img am-item-img="" src="/src/img/product.jpg" alt="Купить УШМ makita 9565HZ б/у в . Цена 2 200 рублей">
+                                    </a>
+                                </div>
+                                <div am-product-wrapper>
+                                    <div am-product-name>
+                                        <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                            Планшет Apple iPad 3 16Gb Wi-Fi
+                                        </a>
+                                    </div>
+                                    <div am-product-price>
+                                        1 500<span am-rub=""> a </span>
+                                    </div>
+                                    <div am-product-city>Краснодар</div>
+                                    <a am-product-action href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/telefony/zaryadnye-ustroistva/dokstanciya-dlya-iphone-i-apple-watch-belkin-f8j183-2029900012416/">В корзину</a>
+                                </div>
+                            </div>
+                            <div am-product class="swiper-slide">
+                                <div am-product-img>
+                                    <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                        <img am-item-img="" src="/src/img/product.jpg" alt="Купить УШМ makita 9565HZ б/у в . Цена 2 200 рублей">
+                                    </a>
+                                </div>
+                                <div am-product-wrapper>
+                                    <div am-product-name>
+                                        <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                            Планшет Apple iPad 3 16Gb Wi-Fi 123 123 123
+                                        </a>
+                                    </div>
+                                    <div am-product-price>
+                                        1 500<span am-rub=""> a </span>
+                                    </div>
+                                    <div am-product-city>Краснодар</div>
+                                    <a am-product-action href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/telefony/zaryadnye-ustroistva/dokstanciya-dlya-iphone-i-apple-watch-belkin-f8j183-2029900012416/">В корзину</a>
+                                </div>
+                            </div>
+                            <div am-product class="swiper-slide">
+                                <div am-product-img>
+                                    <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                        <img am-item-img="" src="/src/img/product.jpg" alt="Купить УШМ makita 9565HZ б/у в . Цена 2 200 рублей">
+                                    </a>
+                                </div>
+                                <div am-product-wrapper>
+                                    <div am-product-name>
+                                        <a href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/instrument/elektroinstrument/ushm-makita-9565h-2029500070267/">
+                                            Планшет Apple iPad 3 16Gb Wi-Fi
+                                        </a>
+                                    </div>
+                                    <div am-product-price>
+                                        1 500<span am-rub=""> a </span>
+                                    </div>
+                                    <div am-product-city>Краснодар</div>
+                                    <a am-product-action href="https://xn--80aalwqglfe.xn---63-5cdesg4ei.xn--p1ai/catalog/telefony/zaryadnye-ustroistva/dokstanciya-dlya-iphone-i-apple-watch-belkin-f8j183-2029900012416/">В корзину</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div am-interactive-stage="stage-2">
+                    <img am-popup-video="review" src="" load-src  data-src-mobile="src/img/site-images/interactive/questions_video_mobile"
+                            data-src-laptop="src/img/site-images/interactive/questions_video_desktop"
+                            data-src-tablet="src/img/site-images/interactive/questions_video_desktop"
+                            data-src-desktop="src/img/site-images/interactive/questions_video_desktop" alt="case">
+                </div>
+                <div am-interactive-stage="stage-3">
+                    <img am-popup-video="save" src="" load-src data-src-mobile="src/img/site-images/interactive/questions_save_desktop"
+                            data-src-laptop="src/img/site-images/interactive/questions_save_desktop"
+                            data-src-tablet="src/img/site-images/interactive/questions_save_desktop"
+                            data-src-desktop="src/img/site-images/interactive/questions_save_desktop" alt="case">
+                </div>
+                <div am-interactive-stage="stage-4">
+                    <img src="" load-src data-src-mobile="src/img/site-images/interactive/questions_support_mobile"
+                            data-src-laptop="src/img/site-images/interactive/questions_support_desktop"
+                            data-src-tablet="src/img/site-images/interactive/questions_support_desktop"
+                            data-src-desktop="src/img/site-images/interactive/questions_support_desktop" alt="case">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div am-receive id="receive">
+        <div am-container="receive">
+            <div am-interactive="wrapper" am-grid="container">
+                <div am-interactive="title" am-grid="item" elg="5" sm="12">
+                    <h2 am-interactive="header">Как <span am-text="red">оформить</span> заказ на доставку? </h2>
+                    <div am-interactive="text-group">
+                        <div am-interactive-text="stage-1" active>
+                            <span am-interactive="stage-text">Шаг 1 из 4</span>
+                            <h3 am-interactive="subheader">Выберите интересный вам товар</h3>
+                            <p am-interactive="text">Нажмите кнопку “Купить с доставкой” и перейдите к оформлению</p>
+                        </div>
+                        <div am-interactive-text="stage-2">
+                            <span am-interactive="stage-text">Шаг 2 из 4</span>
+                            <h3 am-interactive="subheader">Оформите заказ</h3>
+                            <p am-interactive="text">Добавьте товар в корзину, укажите контактные данные и выберите удобный способ доставки </p>
+                        </div>
+                        <div am-interactive-text="stage-3">
+                            <span am-interactive="stage-text">Шаг 3 из 4</span>
+                            <h3 am-interactive="subheader">Задайте интересующие вопросы</h3>
+                            <p am-interactive="text">После оформления товара, вам откроется страница заказа, в чате вы можете задать все вопросы по товару</p>
+                        </div>
+                        <div am-interactive-text="stage-4">
+                            <span am-interactive="stage-text">Шаг 4 из 4</span>
+                            <h3 am-interactive="subheader">Оплатите товар и доставку</h3>
+                            <p am-interactive="text">Когда вы уверены в исправности товара, оплата осуществляется банковской картой</p>
+                        </div>
+                    </div>
+                    <div am-interactive="button-group">
+                        <div am-interactive-prev>
+                            <div am-icon="arrow_left"></div>
+                        </div>
+                        <div am-interactive-next active>
+                            Следующий шаг <div am-icon="arrow_right"></div>
+                        </div>
+                    </div>
+                </div>
+                <div am-interactive="stages" am-grid="item" elg="7" sm="12">
+                    <div am-interactive-prev="mobile">
+                        <div am-icon="arrow_left"></div>
+                    </div>
+                    <div am-interactive-next="mobile" active>
+                        <div am-icon="arrow_right"></div>
+                    </div>
+                    <div am-interactive-stage="stage-1" active>
+                        <img src="" load-src data-src-mobile="src/img/site-images/interactive/delivery_product_mobile"
+                                data-src-laptop="src/img/site-images/interactive/delivery_product"
+                                data-src-tablet="src/img/site-images/interactive/delivery_product"
+                                data-src-desktop="src/img/site-images/interactive/delivery_product" alt="case">
+                    </div>
+                    <div am-interactive-stage="stage-2">
+                        <img src="" load-src data-src-mobile="src/img/site-images/interactive/delivery_order_mobile"
+                                data-src-laptop="src/img/site-images/interactive/delivery_order"
+                                data-src-tablet="src/img/site-images/interactive/delivery_order"
+                                data-src-desktop="src/img/site-images/interactive/delivery_order" alt="case">
+                    </div>
+                    <div am-interactive-stage="stage-3">
+                        <img src="" load-src data-src-mobile="src/img/site-images/interactive/delivery_questions_mobile"
+                                data-src-laptop="src/img/site-images/interactive/delivery_questions"
+                                data-src-tablet="src/img/site-images/interactive/delivery_questions"
+                                data-src-desktop="src/img/site-images/interactive/delivery_questions" alt="case">
+                    </div>
+                    <div am-interactive-stage="stage-4">
+                        <img src="" load-src data-src-mobile="src/img/site-images/interactive/delivery_payment_mobile"
+                                data-src-laptop="src/img/site-images/interactive/delivery_payment"
+                                data-src-tablet="src/img/site-images/interactive/delivery_payment"
+                                data-src-desktop="src/img/site-images/interactive/delivery_payment" alt="case">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="map" am-map>
+        <div am-container="start">
+            <div am-start="wrapper">
+                <div am-start="title">Покупайте товары по <div am-text="red">всей стране!</div> </div>
+                <div am-start="text">
+                    Ищите товары не только в своём городе, а по всей России, с отметкой «Возможна доставка»
+                </div>
+                <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank" am-start="button">
+                    Начать покупки
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div am-footer>
+        <div am-container="footer" am-wrapper="footer">
+            <div am-block="menu">
+                <div am-menu>
+                    <span am-text="menu" am-menu-item="advantages">Преимущества доставки</span>
+                    <span am-text="menu" am-menu-item="receive">Как оформить?</span>
+                    <span am-text="menu" am-menu-item="map">Начать покупки</span>
+                </div>
+                <div am-links>
+                    <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank">
+                        Пользовательское Соглашение
+                    </a>
+                    <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank">
+                        Политика конфиденциальности
+                    </a>
+                </div>
+            </div>
+            <div am-block="logo">
+                <a href="https://xn---63-5cdesg4ei.xn--p1ai/" target="_blank">
+                    <div am-logo></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="bundles/index.js"></script>
+</body>
+
+</html>

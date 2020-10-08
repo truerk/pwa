@@ -1,0 +1,20 @@
+@import "src/scss/index.scss";
+@import "components/mobile_header.scss";
+@import "components/header.scss";
+@import "components/subheader.scss";
+@import "components/advantages.scss";
+@import "components/receive.scss";
+@import "components/map.scss";
+@import "components/footer.scss";
+@import "components/send_popup.scss";
+@import "components/interactive.scss";
+
+img[load-src] {
+    opacity: 0.1;
+    will-change: opacity;
+    transition: all 0.3s;
+}
+
+img[load-src].loaded {
+    opacity: 1;
+}

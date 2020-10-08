@@ -1,0 +1,139 @@
+[am-tooltip="mobile-header"] {
+    height: 473px;
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 55;
+    transform: translateY(-100%);
+    transition: $transition_longest;
+
+    &[active] {
+        transform: translateY(0);
+    }
+
+    & [am-background] {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    [am-wrapper="mobile-header"] {
+        padding-top: 30px;
+        padding-bottom: 60px;
+    }
+
+    [am-top] {
+        margin-bottom: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    [am-logo-wrapper] {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    [am-logo] {
+        display: none;
+    }
+
+    [am-close] {
+        cursor: pointer;
+        display: inline-flex;
+        @include svg-burger_close();
+        @include svg-burger_close-dims();
+    }
+
+    [am-menu-list] {
+        max-width: 50%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $utility_color;
+    }
+
+    [am-menu-item] {
+        color: $text_color_light;
+        font-size: 18px;
+        font-weight: 600;
+        list-style: none;
+        padding-bottom: 25px;
+        transition: $transition_long;
+
+        &:hover {
+            color: $utility_color;
+            cursor: pointer;
+        }
+    }
+
+    [am-contacts] {
+        padding-top: 40px;
+    }
+
+    [am-phone] {
+        padding-bottom: 25px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "";
+            @include svg-phone();
+            @include svg-phone-dims();
+            margin-right: 10px;
+        }
+
+        &:hover {
+            color: $utility_color;
+        }
+    }
+
+    [am-address] {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "";
+            @include svg-placemarker_small();
+            @include svg-placemarker_small-dims();
+            margin-right: 10px;
+        }
+    }
+
+    [am-address],
+    [am-phone] {
+        color: $text_color_light;
+        font-weight: 500;
+        font-size: 16px;
+        max-width: 330px;
+    }
+
+    @media (max-width: $sm) {
+        & [am-background] {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+
+        [am-logo] {
+            display: flex;
+            @include svg-new_logo_min();
+            @include svg-new_logo_min-dims();
+        }
+
+        [am-close] {
+            display: inline-flex;
+            @include svg-burger_close_small();
+            @include svg-burger_close_small-dims();
+        }
+
+        [am-menu-list] {
+            max-width: none;
+        }
+        [am-menu-item] {
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+}

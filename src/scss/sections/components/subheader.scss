@@ -1,0 +1,103 @@
+[am-subheader] {
+    height: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c4c4c4;
+    margin-top: -80px;
+    position: relative;
+
+    [am-wrapper] {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    [am-wrapper="subheader"] {
+        position: relative;
+    }
+
+    [am-gif] {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        & video {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    [am-pretitle] {
+        font-size: 24px;
+        padding-bottom: 15px;
+        color: $text_color_light;
+        text-align: center;
+        font-weight: 300;
+        line-height: 36px;
+        letter-spacing: -0.5px;
+        max-width: 770px;
+    }
+
+    [am-site-title] {
+        font-size: 72px;
+        font-weight: 800;
+        text-align: center;
+        padding-bottom: 30px;
+        line-height: 86px;
+        color: $text_color_light;
+        letter-spacing: -0.75px;
+    }
+
+    @media (max-width: $lg) {
+        & {
+            height: 700px;
+        }
+    }
+
+    @media (max-width: $md) {
+        [am-site-title] {
+            font-size: 55px;
+        }
+    }
+
+    @media (max-width: $sm) {
+        & {
+            height: 490px;
+        }
+
+        [am-pretitle] {
+            padding: 0px;
+            font-size: 14px;
+            padding: 0px 30px;
+            line-height: 20px;
+        }
+
+        [am-site-title] {
+            font-size: 36px;
+            line-height: 43px;
+            letter-spacing: -0.5px;
+            padding-bottom: 13px;
+        }
+    }
+}

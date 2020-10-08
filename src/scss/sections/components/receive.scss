@@ -1,0 +1,12 @@
+[am-receive] {
+    background: #f7f7f7;
+    height: 850px;
+    
+    @media (max-width: $sm) {
+        & {
+            background: inherit;
+            padding: 0;
+            height: initial;
+        }        
+    }
+}

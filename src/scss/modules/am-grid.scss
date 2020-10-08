@@ -1,0 +1,96 @@
+ [am-grid='container'] {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  //Направление главной оси
+  &[direction='row'] {flex-direction: row}
+  &[direction='row-reverse'] {flex-direction: row-reverse}
+
+  //Выравнивание по главной оси
+  &[justify='start'] {justify-content: flex-start}
+  &[justify='end'] {justify-content: flex-end}
+  &[justify='center'] {justify-content: center}
+  &[justify='space-between'] {justify-content: space-between}
+  &[justify='space-around'] {justify-content: space-around}
+
+  //Выравнивание по поперечной оси
+  &[align-items='start'] {align-items: flex-start}
+  &[align-items='end'] {align-items: flex-end}
+  &[align-items='center'] {align-items: center}
+  &[align-items='baseline'] {align-items: baseline}
+  &[align-items='stretch'] {align-items: stretch}
+
+  //Выравнивание строк
+  &[align-content='start'] {align-content: flex-start}
+  &[align-content='end'] {align-content: flex-end}
+  &[align-content='center'] {align-content: center}
+  &[align-content='space-between'] {align-content: space-between}
+  &[align-content='space-around'] {align-content: space-around}
+  &[align-content='stretch'] {align-content: stretch}
+}
+
+[am-grid='item'] {
+  display: block;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 100%;
+
+  //Выравнивание строк (self)
+  &[align-self='flex-start'] {align-self: flex-start}
+  &[align-self='flex-end'] {align-self: flex-end}
+  &[align-self='center'] {align-self: center}
+  &[align-self='baseline'] {align-self: baseline}
+  &[align-self='stretch'] {align-self: stretch}
+}
+
+@for $i from 1 through 12 {
+  [am-grid='item'][elg='#{$i}'] {
+    max-width: percentage($i / 12);
+  }
+  [am-grid~="container"] {
+    [am-grid="item container"][elg='#{$i}'][spacing='1'] { max-width: calc(percentage($i / 12) + #{1 * 4 * 2}px);}
+    [am-grid="item container"][elg='#{$i}'][spacing='2'] { max-width: calc(percentage($i / 12) + #{2 * 4 * 2}px);}
+    [am-grid="item container"][elg='#{$i}'][spacing='3'] { max-width: calc(percentage($i / 12) + #{3 * 4 * 2}px);}
+  }
+}
+
+@for $i from 1 through 3  {
+  [am-grid="container"][spacing='#{$i}'] {
+    margin: -#{$i * 15}px;
+    width: calc(100% + #{$i * 15 * 2}px);
+
+    > [am-grid="item"] {
+      padding: #{$i * 15}px;
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  @for $i from 1 through 12  {
+    [am-grid~="item"][lg~='#{$i}'] { max-width: percentage($i / 12);}
+  }
+}
+
+@media screen and (max-width: $md) {
+  @for $i from 1 through 12  {
+    [am-grid~="item"][md~='#{$i}'] { max-width: percentage($i / 12);}
+  }
+  @for $i from 1 through 3  {
+    [am-grid="container"][spacing='#{$i}'] {
+      margin: -#{$i * 7}px;
+      width: calc(100% + #{$i * 7 * 2}px);
+
+      > [am-grid="item"] {
+        padding: #{$i * 7}px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  @for $i from 1 through 12  {
+    [am-grid~="item"][sm~='#{$i}'] { max-width: percentage($i / 12);}
+  }
+}

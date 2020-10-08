@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SF Pro Text', sans-serif;
+}
+
+[am-rub] {
+  font-family: ALSRubl;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+
+  transition: color 0.1s ease-in-out;
+}
+
+button {
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper,
+#mobile-header,
+#page {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+[hidden-elg] {
+  display: none !important;
+}
+
+[am-title],
+[am-block] {
+  display: flex;
+}
+
+[am-button] {
+  font-weight: 700;
+}

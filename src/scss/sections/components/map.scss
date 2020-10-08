@@ -1,0 +1,128 @@
+[am-map] {
+    position: relative;
+    height: 900px;
+    width: auto;
+
+    canvas {
+        //filter: grayscale(1);
+    }
+    
+    [am-container="start"] {
+        position: relative;
+    }
+    [am-start="wrapper"] {
+        background: #ffffff;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.29);
+        border-radius: 10px;
+        padding: 45px 55px;
+        position: absolute;
+        width: 100%;        
+        max-width: 477px;
+        z-index: 1;
+        left: 100px;
+        transform: translateY(50%);
+
+        [am-start="title"] {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: 48px;
+            line-height: 52px;
+            font-weight: 800;
+            color: #333333;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        [am-start="text"] {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: 18px;
+            line-height: 21px;
+            color: #797979;
+            margin-bottom: 30px;
+        }
+
+        [am-start="button"] {
+            background: $utility_color;
+            border-radius: 4px;
+            color: #ffffff;
+            width: 100%;
+            max-width: 210px;
+            padding: 10px 15px;
+            transition: background 0.1s ease;
+            font-size: 18px;
+            line-height: 21px;
+            display: block;
+            text-align: center;
+            letter-spacing: -0.5px;
+
+            &:hover {
+                background: #9b0000;
+            }
+            &:active {
+                background: #780000;
+            }
+        }
+    }
+
+    @media (max-width: $lg) {
+        [am-wrapper="map"] {
+            right: 15%;
+        }
+    }
+    @media (max-width: $md) {
+        [am-wrapper="map"] {
+            padding: 30px;
+            width: 330px;
+        }
+    }
+    @media (max-width: $sm) {
+        & {
+            height: 623px;
+            transform: translate(0, 0);
+            position: relative;
+            padding-bottom: 0;
+        }
+
+        [am-wrapper="map"] {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            transform: none;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            top: auto;
+            box-shadow: none;
+            padding-bottom: 0;
+            background: #f6f6f4;
+            box-shadow: inset 0px 2px 4px 0px rgba(50, 50, 50, 0.5);
+            border-radius: 0;
+        }
+
+        [am-start="wrapper"] { 
+            padding: 20px 10px;
+            max-width: 300px;
+            left: 50%;
+            width: calc(100% - 20px);
+            transform: translate(-50%, 30%);
+
+            [am-start="title"] {            
+                font-family: 'SF Pro Text', sans-serif;
+                font-size: 26px;
+                line-height: 109.34%;
+                padding-right: 30px;
+            }
+
+            [am-start="text"] {
+                font-family: 'SF Pro Text', sans-serif;
+                font-size: 16px;
+                line-height: 19px;
+            }
+
+            [am-start="button"] {
+                font-family: 'SF Pro Text', sans-serif;
+                font-size: 16px;
+                line-height: 19px;                
+            }
+        }
+    }
+}

@@ -1,0 +1,101 @@
+[am-container="header"] {
+    padding-top: 32px;
+    position: relative;
+    z-index: 1;
+
+    [am-wrapper="mobile-header"] {
+        display: none;
+    }
+
+    [am-wrapper="header"] {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    [am-column="right"] {
+        display: flex;
+    }
+
+    [am-logo="desktop"] {
+        display: flex;
+        &::before {
+            content: "";
+            @include svg-new_logo();
+            @include svg-new_logo-dims();
+        }
+    }
+
+    [am-phone],
+    [am-menu-item] {
+        cursor: pointer;
+    }
+
+    [am-menu-item] + [am-menu-item] {
+        padding-left: 30px;
+    }
+
+    [am-phone] {
+        display: flex;
+        &::before {
+            content: "";
+            margin-right: 5px;
+            @include svg-phone();
+            @include svg-phone-dims();
+        }
+    }
+
+    @media (max-width: $lg) {
+        [am-wrapper="header"] {
+            display: none;
+        }
+
+        [am-wrapper="mobile-header"] {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        [am-logo="mobile"] {
+            display: flex;
+            &::before {
+                content: "";
+                @include svg-new_logo();
+                @include svg-new_logo-dims();
+            }
+        }
+
+        [am-burger] {
+            order: 2;
+            display: flex;
+            &::before {
+                content: "";
+                @include svg-burger_small();
+                @include svg-burger_small-dims();
+            }
+        }
+    }
+    @media (max-width: $sm) {
+        [am-burger] {
+            padding-right: 0;
+        }
+
+        [am-logo="mobile"] {
+            display: flex;
+            &::before {
+                content: "";
+                @include svg-new_logo_min();
+                @include svg-new_logo_min-dims();
+            }
+        }
+        [am-phone] {
+            &::before {
+                margin-right: 0;
+                transform: scale(1.2);
+            }
+        }
+        [am-phone] span {
+            display: none;
+        }
+    }
+}
